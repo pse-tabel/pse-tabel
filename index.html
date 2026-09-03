@@ -53,7 +53,12 @@ body{
 }
 .app{position:relative; z-index:1; max-width:520px; margin:0 auto; min-height:100dvh;
   display:flex; flex-direction:column; gap:14px;
-  padding:14px 16px calc(20px + env(safe-area-inset-bottom)); }
+  padding:calc(14px + env(safe-area-inset-top)) calc(16px + env(safe-area-inset-right))
+          calc(20px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left));}
+/* strook onder de klok en het batterij-icoon, 0px hoog in een gewone browser */
+.statusbar{position:fixed; top:0; left:0; right:0; height:env(safe-area-inset-top); z-index:9;
+  pointer-events:none; background:color-mix(in srgb,var(--ink) 78%,transparent);
+  -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px)}
 
 /* ---------- header ---------- */
 .top{display:flex; align-items:center; gap:10px}
@@ -251,6 +256,7 @@ input.wrong{border-color:var(--bad); color:var(--bad)}
 }
 </style>
 
+<div class="statusbar"></div>
 <div class="glow" id="glow"></div>
 <div class="grid-bg"></div>
 
